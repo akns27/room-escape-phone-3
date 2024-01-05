@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,9 @@
 
 <body>
     <h1>결제_비밀번호</h1>
-    <input type="text" id="answerInput" placeholder="6자리 숫자 입력(띄어쓰기 하지 마세요)">
-    <button id = "nextbtn" onclick="checkAnswer()">확인</button>
-    
+    <input type="text" id="answerInput" placeholder="6자리 숫자 입력(띄어쓰기 하지 마세요)" onkeydown="handleEnter(event)">
+    <button id="nextbtn" onclick="checkAnswer()">확인</button>
+
     <div id="result"></div>
 
     <script>
@@ -24,9 +25,9 @@
             if (userAnswer === correctAnswer) {
                 resultDiv.innerHTML = "정답입니다!";
 
-                setTimeout(function() {
-                window.location.href = 'https://roan-helmet-ae1.notion.site/897faffc53e84e5cbbcde7f428490d81?pvs=4'; 
-              }, 1000);
+                setTimeout(function () {
+                    window.location.href = 'https://roan-helmet-ae1.notion.site/897faffc53e84e5cbbcde7f428490d81?pvs=4';
+                }, 1000);
 
                 resultDiv.style.color = "#5AB0FF";
             } else {
@@ -36,6 +37,25 @@
 
             resultDiv.style.display = "block";
         }
+        function handleEnter(e) {
+            if (e.keyCode === 13) { // 엔터키
+                checkAnswer();
+            }
+        }
+        document.onkeydown = function (e) {
+            if (e.keyCode == 123) { // F12
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { // Ctrl+Shift+I
+                return false;
+            }
+        }
+
+        document.oncontextmenu = function () {
+            return false;
+        }
+
     </script>
 </body>
+
 </html>
